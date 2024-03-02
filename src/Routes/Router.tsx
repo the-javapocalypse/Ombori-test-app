@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {RootStateOrAny, useSelector} from "react-redux";
 import {useTranslation, Trans} from 'react-i18next';
@@ -13,6 +13,8 @@ import "../index.scss";
 import Home from "../Components/Screens/Dashboard/Home/Home"
 import Error from "../Components/Helpers/Error/Error";
 import UserMain from "../Components/Screens/Dashboard/User/UserMain/UserMain";
+import {get} from "../Services/GenericApiService";
+import {log} from "../Services/LoggerService";
 
 
 function Router() {
@@ -59,6 +61,18 @@ function Router() {
             },
         },
     });
+
+    // Hooks
+    useEffect(() => {
+        setThemeColors({
+            primary: '#2AB762',
+            secondary: '#1a1a1a',
+            background: theme == 'dark' ? '#121212' : '#FFFFFF',
+            textColor: theme == 'dark' ? '#FFFFFF' : '#121212' ,
+        })
+
+        console.log(darkTheme);
+    }, [theme]);
 
     return (
         <ThemeProvider theme={darkTheme}>

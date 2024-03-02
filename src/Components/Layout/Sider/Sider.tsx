@@ -1,8 +1,8 @@
 // @ts-nocheck
 
-import React, {useEffect} from 'react';
-import {useStyles} from './Styles';
-import {styled, useTheme, Theme, CSSObject} from '@mui/material/styles';
+import React, { useEffect } from 'react';
+import { useStyles } from './Styles';
+import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -12,17 +12,15 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
-import {useLocation} from 'react-router-dom'
+import { To, useLocation} from 'react-router-dom'
 import {RootStateOrAny, useDispatch, useSelector} from "react-redux";
 import {collapse} from "./Actions";
 import {expand} from "../Header/Actions"
 import {useNavigate} from "react-router-dom";
 import Tooltip from '@mui/material/Tooltip';
-import {getUserData} from "../../../Services/LocalStorageService";
-import {decrypt} from "../../../Services/CryptoService";
 
 // font awesome stuff
 const iconList = Object
@@ -70,7 +68,6 @@ const DrawerHeader = styled('div')(({theme}) => ({
     ...theme.mixins.toolbar,
 }));
 
-
 const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({
         width: drawerWidth,
@@ -92,6 +89,10 @@ function Sider() {
     // Set Theme
     const theme = useTheme();
 
+    const activeTheme = useSelector(
+        (state: RootStateOrAny) => state.global.global.theme,
+    );
+
     // Css for module
     const classes = useStyles();
 
@@ -106,7 +107,6 @@ function Sider() {
         (state: RootStateOrAny) => state.sider,
     );
 
-    let userdata = getUserData();
 
     const header = useSelector(
         (state: RootStateOrAny) => state.header,
@@ -117,7 +117,6 @@ function Sider() {
 
     // UI vars
     const [open, setOpen] = React.useState(sider.state.isExpanded);
-
 
     // Hooks
     useEffect(() => {
@@ -136,10 +135,9 @@ function Sider() {
         // setOpen(false);
     };
 
-    const navigateToComponent = (url) => {
+    const navigateToComponent = (url: To) => {
         navigate(url)
     }
-
 
     // Menu Items
     const menuItems: any = [
@@ -154,8 +152,6 @@ function Sider() {
             icon: 'user-plus'
         },
         // %TEMPLATE_MENU_ITEMS%
-
-
     ];
 
     return (
@@ -164,21 +160,26 @@ function Sider() {
                 <Drawer variant="permanent" open={open}>
                     <DrawerHeader>
 
-                        <img className="img-fluid mx-auto px-5"
-                             src={require('../../../Assets/img/logo/logo.png')} alt={'Phygrid'}/>
+                        {activeTheme == 'dark' &&
+                            <img className="img-fluid mx-auto px-5" src={require('../../../Assets/img/logo/logo.png')} alt={'Phygrid'} />
+                        }
+
+                        {activeTheme != 'dark' &&
+                            <img className="img-fluid mx-auto px-5" src={require('../../../Assets/img/logo/logo_light.png')} alt={'Phygrid'} />
+                        }
+
 
                         <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </DrawerHeader>
-                    <Divider/>
+                    <Divider />
                     <List>
                         {menuItems.map((item: any, index: any) => (
-                            <Tooltip title={item.title} placement="right">
+                            <Tooltip title={item.title} placement="right" key={index}>
                                 <ListItemButton
-                                    className={location.pathname == item.url ? 'bg-custom-primary-faded' : ''}
+                                    className={location.pathname === item.url ? 'bg-custom-primary-faded' : ''}
                                     onClick={() => navigateToComponent(item.url)}
-                                    key={item.title}
                                     sx={{
                                         minHeight: 48,
                                         justifyContent: open ? 'initial' : 'center',
@@ -192,10 +193,9 @@ function Sider() {
                                             justifyContent: 'center',
                                         }}
                                     >
-                                        <FontAwesomeIcon icon={item.icon}/>
-
+                                        <FontAwesomeIcon icon={item.icon} />
                                     </ListItemIcon>
-                                    <ListItemText primary={item.title} sx={{opacity: open ? 1 : 0}}/>
+                                    <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
                                 </ListItemButton>
                             </Tooltip>
                         ))}
