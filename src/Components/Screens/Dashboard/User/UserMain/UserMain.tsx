@@ -15,6 +15,7 @@ import {RootStateOrAny, useDispatch, useSelector} from "react-redux";
 
 import Header from "../../../../Layout/Header/Header";
 import Sider from "../../../../Layout/Sider/Sider";
+import {log} from "../../../../../Services/LoggerService";
 
 
 const UserMain = () => {
@@ -24,6 +25,11 @@ const UserMain = () => {
     // child ref for alert
     const notifications = useRef();
 
+    // Redux ------------------------------------->
+    const theme = useSelector(
+        (state: RootStateOrAny) => state.global.global.theme,
+    );
+
     // module(s) for api ------------------------------------->
     const moduleMain = 'users';
 
@@ -32,21 +38,25 @@ const UserMain = () => {
 
     // ui vars ------------------------------------->
     const [loading, setLoading] = useState(true);
+    const [lazyLoading, setLazyLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [maxPage, setMaxPage] = useState(0);
 
     // hooks ------------------------------------->
     useEffect(() => {
         const fetchUsers = async () => {
-            setLoading(true);
+            setLazyLoading(true);
             try {
                 const response = await get(moduleMain + `?page=${page}`);
                 setUsers(prevUsers => [...prevUsers, ...response.data]);
                 setMaxPage(response.total_pages);
                 setLoading(false);
-            } catch (error) {
-                console.error('Error fetching users:', error);
+                setLazyLoading(false);
+            } catch (_err) {
+                log(_err);
+                notifications.current.alert(t('common.somethingWentWrong'), t('common.tryAgain'), 'error');
                 setLoading(false);
+                setLazyLoading(false);
             }
         };
 
@@ -90,18 +100,18 @@ const UserMain = () => {
                 </div>
 
 
-                <div className={'h-40 card shadow-lg overflow-scroll'} onScroll={handleScroll}>
+                <div className={`h-40 card shadow-lg scrollY ${theme === 'dark' ? 'bg-dark' : ''}`} onScroll={handleScroll}>
                     <List>
                         {users.map(user => (
                             <ListItem key={user.id}>
                                 <ListItemAvatar>
                                     <Avatar alt={`${user.first_name} ${user.last_name}`} src={user.avatar}/>
                                 </ListItemAvatar>
-                                <ListItemText primary={`${user.first_name} ${user.last_name}`} secondary={user.email}/>
+                                <ListItemText disableTypography={true} primary={`${user.first_name} ${user.last_name}`} />
                             </ListItem>
                         ))}
                     </List>
-                    {loading && <CircularProgress style={{display: 'block', margin: 'auto'}}/>}
+                    {lazyLoading && <CircularProgress style={{display: 'block', margin: 'auto'}}/>}
                 </div>
 
                 {/* Alerts */}
