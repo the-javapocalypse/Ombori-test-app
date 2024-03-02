@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import Typography from "@mui/material/Typography";
 import {styled, useTheme} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar/AppBar";
@@ -11,9 +10,9 @@ import {collapse} from "./Actions";
 import { expand } from "../Sider/Actions";
 import {switchTheme} from "../../../Global/Actions";
 import '../../../index.scss';
-import {Box, Button, FormControlLabel, Switch} from "@mui/material";
-import {getUserData} from "../../../Services/LocalStorageService";
-import {decrypt} from "../../../Services/CryptoService";
+import {Switch} from "@mui/material";
+import BottomAppBar from "../BottomAppBar/BottomAppBar";
+
 
 const drawerWidth = 240;
 
@@ -103,11 +102,6 @@ function Header() {
         (state: RootStateOrAny) => state.global.global.theme,
     );
 
-    let userdata = getUserData();
-
-    // get user role
-    // @ts-ignore
-
     // Dispatcher
     const dispatch = useDispatch()
 
@@ -115,7 +109,6 @@ function Header() {
     const [open, setOpen] = React.useState(header.state.isExpanded);
     const [activeTheme, setActiveTheme] = React.useState(theme);
 
-    const navItems = ['Home', 'My Leagues', 'Logout'];
 
     // Hooks
     useEffect(() => {
@@ -142,8 +135,7 @@ function Header() {
 
     return (
         <>
-            {/* Admin UI */}
-            {/*{showAdminHeader &&*/}
+            <div className="d-none d-md-block">
                 <AppBar position="fixed" open={open} className="bg-custom-gradient">
                     <Toolbar>
                         <IconButton
@@ -172,40 +164,11 @@ function Header() {
 
                     </Toolbar>
                 </AppBar>
-            {/*}*/}
+            </div>
 
-
-            {/* User UI */}
-            {/*{!showAdminHeader &&*/}
-            {/*    <AppBar position="fixed" className="bg-custom-gradient">*/}
-            {/*        <Toolbar>*/}
-            {/*            <IconButton*/}
-            {/*                color="inherit"*/}
-            {/*                aria-label="open drawer"*/}
-            {/*                onClick={handleDrawerOpen}*/}
-            {/*                edge="start"*/}
-            {/*                sx={{*/}
-            {/*                    marginRight: 5,*/}
-            {/*                    ...(open && {display: 'none'}),*/}
-            {/*                }}*/}
-            {/*            >*/}
-            {/*                <MenuIcon/>*/}
-            {/*            </IconButton>*/}
-            {/*            <Typography variant="h6" noWrap component="div">*/}
-            {/*                {process.env.REACT_APP_PROJECT_NAME}*/}
-            {/*            </Typography>*/}
-
-            {/*            <Box sx={{marginLeft: "auto"}}>*/}
-            {/*                {navItems.map((item) => (*/}
-            {/*                    <Button key={item} sx={{ color: '#fff' }}>*/}
-            {/*                        {item}*/}
-            {/*                    </Button>*/}
-            {/*                ))}*/}
-            {/*            </Box>*/}
-
-            {/*        </Toolbar>*/}
-            {/*    </AppBar>*/}
-            {/*}*/}
+            <div className="d-block d-md-none">
+                <BottomAppBar/>
+            </div>
         </>
     );
 }

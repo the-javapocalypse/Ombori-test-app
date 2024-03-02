@@ -27,9 +27,6 @@ body {
 }
 
 .bg-custom-gradient {
-  //background: $gradientColor1!important;
-  //background: -moz-linear-gradient(50deg, $gradientColor1 0%, $gradientColor2 50%, $gradientColor3 100%)!important;
-  //background: -webkit-linear-gradient(50deg, $gradientColor1 0%, $gradientColor2 50%, $gradientColor3 100%)!important;
   background: linear-gradient(to left, $gradientColor1, $gradientColor2,)!important;
 }
 
@@ -37,7 +34,6 @@ body {
 .bg-custom-animated{
   background: linear-gradient(100deg, $gradientColor1, $gradientColor2, $gradientColor3);
   background-size: 1600% 1600%;
-
   -webkit-animation: AnimationName 27s ease infinite;
   -moz-animation: AnimationName 27s ease infinite;
   -o-animation: AnimationName 27s ease infinite;
@@ -101,24 +97,32 @@ body {
   width: 100%;
 }
 
+.h-10 {
+  height: 10vh;
+}
+.h-20 {
+  height: 20vh;
+}
+.h-30 {
+  height: 30vh;
+}
+.h-40 {
+  height: 40vh;
+}
+.h-50 {
+  height: 50vh;
+}
+.h-60 {
+  height: 60vh;
+}
+.h-70 {
+  height: 70vh;
+}
+.h-80 {
+  height: 80vh;
+}
 .h-90 {
-  min-height: 90vh;
-}
-.h-100 {
-  min-height: 100vh;
-}
-
-/* overwrite mui styles */
-.MuiLoadingButton-loadingIndicator{
-  color: white!important;
-}
-
-.MuiTablePagination-selectLabel {
-  margin: 0px!important;
-}
-
-.MuiTablePagination-displayedRows {
-  margin: 0px!important;
+  height: 90vh;
 }
 
 
@@ -141,8 +145,4 @@ body {
 ::-webkit-scrollbar-thumb:window-inactive {
   width: 6px;
   background-color: #F5F5F5;
-}
-
-.apexcharts-menu-open{
-  color: #000!important;
 }
