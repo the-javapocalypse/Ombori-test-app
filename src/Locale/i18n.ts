@@ -31,10 +31,6 @@ i18n
                         loginFailed: 'Login Failed',
                         invalidCredentials: 'Invalid login credentials'
                     },
-                    form: {
-                        email: 'Email',
-                        password: 'Password'
-                    },
                     common: {
                         add: 'Add',
                         edit: 'Update',
@@ -52,83 +48,14 @@ i18n
                         genericSuccess: 'Operation completed successfully',
                         addResults: 'Add Results'
                     },
-                    environmentVariables: {
-                        name: 'Name',
-                        value: 'Value',
-                        details: 'Environment Variable Details'
-                    },
                     module: {
                         register: 'Register',
                         login: 'Login',
                         user: 'Users',
-                        boost: 'Boosts',
-                        userpick: 'User Picks',
-                        userleague: 'User Leagues',
-                        league: 'Leagues',
-                        country: 'Countries',
-                        race: 'Races',
-                        driver: 'Drivers',
-                        team: 'Teams',
-                        environmentVariables: 'Environment Variable',
-                        // add new module here %TEMPLATE_MODULE_NAME%
                     },
                     user: {
-                        name: 'Name',
-                        email: 'Email',
-                        contact: 'Contact',
-                        isActive: 'Active',
-                        isFacebookLinked: 'Facebook Linked',
-                        isAppleLinked: 'Apple Linked',
-                        isGoogleLinked: 'Google Linked',
-                        password: 'Password',
-                        token: 'Token',
-                        lastLogin: 'Last Login',
-                        dob: 'Date Of Birth',
-                        gender: 'Gender',
+                        lazyLoadCompleted: 'All Users Fetched'
                     },
-                    boost: {
-                        name: 'Name',
-                        min: 'Minimum',
-                        max: 'Maximum',
-                        config: 'Configurations',
-                    },
-                    userpick: {
-                        userId: 'User',
-                        raceId: 'Boost',
-                        leagueId: 'League',
-                        picks: 'Picks',
-                        score: 'Score',
-                        isBoost: 'Use Boost',
-                        boostId: 'Boost',
-                    },
-                    userleague: {
-                        userId: 'User',
-                        leagueId: 'League',
-                    },
-                    league: {
-                        name: 'Name',
-                        ownerId: 'Created By',
-                        countryId: 'Country',
-                        code: 'Invite Code',
-                        isPublic: 'Public League',
-                    },
-                    country: {
-                        name: 'Name',
-                        flag: 'Flag',
-                    },
-                    race: {
-                        name: 'Name',
-                        countryId: 'Country',
-                        date: 'Race Day'
-                    },
-                    driver: {
-                        name: 'Name',
-                        teamId: 'nan',
-                    },
-                    team: {
-                        name: 'Name',
-                        content: 'Content',
-                    }// add new module screen items here %TEMPLATE_MODULE_SCREEN_ITEMS%
                 }
             },
             de: {

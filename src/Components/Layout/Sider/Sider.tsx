@@ -160,47 +160,48 @@ function Sider() {
 
     return (
         <>
+            <div className="d-none d-md-block">
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
 
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
+                        <img className="img-fluid mx-auto px-5"
+                             src={require('../../../Assets/img/logo/logo.png')} alt={'Phygrid'}/>
 
-                    <img className="img-fluid mx-auto px-5"
-                         src={require('../../../Assets/img/logo/logo.png')} alt={'Phygrid'}/>
-
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider/>
-                <List>
-                    {menuItems.map((item: any, index: any) => (
-                        <Tooltip title={item.title} placement="right">
-                            <ListItemButton
-                                className={location.pathname == item.url ? 'bg-custom-primary-faded' : ''}
-                                onClick={() => navigateToComponent(item.url)}
-                                key={item.title}
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider/>
+                    <List>
+                        {menuItems.map((item: any, index: any) => (
+                            <Tooltip title={item.title} placement="right">
+                                <ListItemButton
+                                    className={location.pathname == item.url ? 'bg-custom-primary-faded' : ''}
+                                    onClick={() => navigateToComponent(item.url)}
+                                    key={item.title}
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={item.icon}/>
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={item.icon}/>
 
-                                </ListItemIcon>
-                                <ListItemText primary={item.title} sx={{opacity: open ? 1 : 0}}/>
-                            </ListItemButton>
-                        </Tooltip>
-                    ))}
-                </List>
-            </Drawer>
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.title} sx={{opacity: open ? 1 : 0}}/>
+                                </ListItemButton>
+                            </Tooltip>
+                        ))}
+                    </List>
+                </Drawer>
+            </div>
         </>
     );
 }

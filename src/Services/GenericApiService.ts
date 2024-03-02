@@ -32,20 +32,20 @@ export async function getAll(_module: string, page=0, size=0) {
 }
 
 
-export async function getById(_module: string, _id: string) {
+export async function get(_module: string) {
     const url = process.env.REACT_APP_REST_ENDPOINT;
-    const response = await axios.get(url + _module + '/' + _id, generateHeaders());
+    const response = await axios.get(url + _module, generateHeaders());
     return response.data;
 }
 
-export async function patch(_module: string, _id: string, _data: any) {
+export async function patch(_module: string, _data: any) {
     const url = process.env.REACT_APP_REST_ENDPOINT;
-    const response = await axios.patch(url + _module + '/' + _id, _data, generateHeaders());
+    const response = await axios.patch(url + _module, _data, generateHeaders());
     return response.data;
 }
 
-export async function deleteById(_module: string, _id: string) {
+export async function deleteById(_module: string) {
     const url = process.env.REACT_APP_REST_ENDPOINT;
-    const response = await axios.delete(url + _module + '/soft/' + _id, generateHeaders());
+    const response = await axios.delete(url + _module, generateHeaders());
     return response.data;
 }
