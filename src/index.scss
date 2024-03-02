@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Michroma&family=Poppins:wght@300;700&display=swap');
+
+$primaryColor: rgb(42, 183, 98);
+$primaryColorFaded: rgba(42, 183, 98, 0.1);
+$secondaryColor: rgb(26, 26, 26);
+$secondaryColorFaded: rgba(26, 26, 26,0.1);
+
+
+$gradientColor1: $primaryColor;
+$gradientColor2: rgb(18, 18, 18);
+$gradientColor3: $secondaryColor;
+
+body {
+  margin: 0;
+  font-family: "Michroma", sans-serif!important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden!important;
+}
+
+.bg-custom-primary-faded {
+  background: $primaryColorFaded !important;
+}
+
+.bg-custom-secondary-faded {
+  background: $secondaryColorFaded !important;
+}
+
+.bg-custom-gradient {
+  //background: $gradientColor1!important;
+  //background: -moz-linear-gradient(50deg, $gradientColor1 0%, $gradientColor2 50%, $gradientColor3 100%)!important;
+  //background: -webkit-linear-gradient(50deg, $gradientColor1 0%, $gradientColor2 50%, $gradientColor3 100%)!important;
+  background: linear-gradient(to left, $gradientColor1, $gradientColor2,)!important;
+}
+
+/*animated gradient bg*/
+.bg-custom-animated{
+  background: linear-gradient(100deg, $gradientColor1, $gradientColor2, $gradientColor3);
+  background-size: 1600% 1600%;
+
+  -webkit-animation: AnimationName 27s ease infinite;
+  -moz-animation: AnimationName 27s ease infinite;
+  -o-animation: AnimationName 27s ease infinite;
+  animation: AnimationName 27s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 11%}
+  50%{background-position:100% 90%}
+  100%{background-position:0% 11%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 11%}
+  50%{background-position:100% 90%}
+  100%{background-position:0% 11%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:0% 11%}
+  50%{background-position:100% 90%}
+  100%{background-position:0% 11%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 11%}
+  50%{background-position:100% 90%}
+  100%{background-position:0% 11%}
+}
+
+.bg-white {
+  background: #ffffff;
+}
+
+.bg-custom-primary {
+  background: $primaryColor!important;
+}
+
+.bg-custom-secondary {
+  background: $secondaryColor;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-custom-primary {
+  color: $primaryColor!important;
+}
+
+.text-custom-secondary {
+  color: $secondaryColor;
+}
+
+.delete-btn:hover {
+  color: #d60b0b;
+}
+
+.edit-btn:hover {
+  color: $primaryColor;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.h-90 {
+  min-height: 90vh;
+}
+.h-100 {
+  min-height: 100vh;
+}
+
+/* overwrite mui styles */
+.MuiLoadingButton-loadingIndicator{
+  color: white!important;
+}
+
+.MuiTablePagination-selectLabel {
+  margin: 0px!important;
+}
+
+.MuiTablePagination-displayedRows {
+  margin: 0px!important;
+}
+
+
+// overwrite css for scrollbars globally
+::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: $primaryColor;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.apexcharts-menu-open{
+  color: #000!important;
+}

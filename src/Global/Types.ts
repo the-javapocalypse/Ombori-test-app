@@ -1,0 +1,3 @@
+export const SWITCH_LANGUAGE = 'SWITCH_LANGUAGE'
+export const SWITCH_THEME = 'SWITCH_THEME'
+export const SET_FORM_DATA = 'SET_FORM_DATA'
