@@ -3,7 +3,6 @@
 import {useStyles} from './Styles';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import React, {useState, useEffect, useRef} from 'react';
 import {useTranslation} from "react-i18next";
 import {
@@ -17,10 +16,9 @@ import {
 } from '@material-ui/core';
 import {deleteById, get} from '../../../../../Services/GenericApiService';
 import AlertM from '../../../../Helpers/AlertM/AlertM';
-import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
-import {RootStateOrAny, useDispatch, useSelector} from "react-redux";
+import {RootStateOrAny, useSelector} from "react-redux";
 
 
 import Header from "../../../../Layout/Header/Header";
