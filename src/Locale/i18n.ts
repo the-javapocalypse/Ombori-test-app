@@ -23,12 +23,16 @@ i18n
                         tagline: 'Register with email',
                         haveAccount: 'Already have an account?',
                         createSuccess: 'Account Created',
-                        creationMailSent: 'An activation email has been sent to you,'
+                        creationMailSent: 'An activation email has been sent to you,',
+                        email: 'Email',
+                        password: 'Password',
                     },
                     login: {
                         tagline: 'Enter your email and password to login',
                         dontHaveAccount: 'Don\'t have an account?',
                         loginFailed: 'Login Failed',
+                        email: 'Email',
+                        password: 'Password',
                         invalidCredentials: 'Invalid login credentials'
                     },
                     common: {

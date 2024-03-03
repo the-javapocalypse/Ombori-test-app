@@ -32,25 +32,32 @@ function Register() {
 
     const onSubmit = (_data: any) => {
         setLoading(true); // show loader
-        post(module, _data)
-            .then(_res => {
-                setLoading(false); // hide loader
-                setOpenSuccessAlert(true);  // show success alert
-            })
-            .catch(_err => {
-                log(_err);
-                setLoading(false); // hide loader
-                setOpenErrorAlert(true);  // show error alert
-            })
+
+        // for demo purpose, for actual usage, we will need to uncomment the code below
+        setOpenSuccessAlert(true);  // show success alert
+        setLoading(false); // hide loader
+
+        // post(module, _data)
+        //     .then(_res => {
+        //         setLoading(false); // hide loader
+        //         setOpenSuccessAlert(true);  // show success alert
+        //     })
+        //     .catch(_err => {
+        //         log(_err);
+        //         setLoading(false); // hide loader
+        //         setOpenErrorAlert(true);  // show error alert
+        //     })
     }
 
 
     return (
-        <section className="full-width h-100">
-            <div className="row h-100">
+        <section className=" h-100">
+            <div className="row h-100 p-0 m-0">
 
+                {/* Spacer */}
+                <div className="col-md-1 col-0"></div>
                 {/* Content Div */}
-                <div className="col-md-6">
+                <div className="col-md-4 col-12 px-md-5">
                     <div className="d-flex align-items-center justify-content-center h-100">
                         <div className="px-md-0 px-4">
                             <h2>{t('module.register')}</h2>
@@ -58,42 +65,56 @@ function Register() {
                             <form className="row px-2" onSubmit={handleSubmit(onSubmit)}>
                                 <TextField id="emailInput"
                                            {...register("email", {required: true})}
-                                           label={t('form.email')}
+                                           label={t('register.email')}
                                            type={"email"}
                                            error={!!errors.email}
                                            variant="outlined"
-                                           className="full-width my-2"/>
+                                           className="full-width mt-4"/>
                                 <TextField id="passwordInput"
                                            {...register("password", {required: true})}
-                                           label={t('form.password')}
+                                           label={t('register.password')}
                                            type={"password"}
                                            error={!!errors.password}
                                            variant="outlined"
-                                           className="full-width my-2"/>
+                                           className="full-width mt-4"/>
                                 <LoadingButton loading={loading}
                                                type="submit"
                                                variant="contained"
-                                               className="my-2 py-3 bg-custom-gradient">
+                                               className="mb-2 mt-4 py-3 bg-custom-gradient">
                                     {t('module.register')}
                                 </LoadingButton>
                             </form>
-                            <p className="my-2">
+                            <p className="my-5 text-center">
                                 {t('register.haveAccount')}&nbsp;
-                                <span className="fw-bolder text-theme-dark" onClick={() => navigate('/login')}>
+                                <span className="fw-bolder text-theme-dark pointer" onClick={() => navigate('/login')}>
                                     {t('module.login')}
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
+                {/* Spacer */}
+                <div className="col-md-1 col-0"></div>
 
                 {/* Hero Div */}
-                <div className="col-md-6">
+                <div className="col-md-6 col-12 order-first order-md-last">
                     <div className="">
-                        <Card sx={{m: 3, minHeight: '95vh', boxShadow: 10}} className="bg-custom-gradient">
-                            <CardContent>
+                        {/* Laptop Div */}
+                        <Card sx={{m: 3, minHeight: '95vh', boxShadow: 10}} className={'d-md-block d-none shadow-lg'}>
+                            <div className="d-flex align-items-center justify-content-center bg-custom-animated "
+                                 style={{minHeight: '95vh'}}>
+                                <img className="img-fluid mx-auto" style={{width: '15vw'}}
+                                     src={require('../../../../Assets/img/logo/logo.png')}/>
+                            </div>
+                        </Card>
 
-                            </CardContent>
+                        {/* Phone Div */}
+                        <Card sx={{m: 3, minHeight: '30vh', boxShadow: 10}} className={'bg-custom-gradient d-md-none d-block shadow-lg'}>
+                            <div className="d-flex align-items-center justify-content-center bg-custom-animated"
+                                 style={{minHeight: '30vh'}}>
+                                <img className="img-fluid mx-auto"
+                                     src={require('../../../../Assets/img/logo/logo.png')}/>
+                            </div>
                         </Card>
                     </div>
                 </div>

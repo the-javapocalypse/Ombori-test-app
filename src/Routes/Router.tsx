@@ -15,6 +15,8 @@ import Error from "../Components/Helpers/Error/Error";
 import UserMain from "../Components/Screens/Dashboard/User/UserMain/UserMain";
 import {get} from "../Services/GenericApiService";
 import {log} from "../Services/LoggerService";
+import Login from "../Components/Screens/Authentication/Login/Login";
+import Register from "../Components/Screens/Authentication/Register/Register";
 
 
 function Router() {
@@ -87,6 +89,11 @@ function Router() {
                     <Route path="/" element={<Home/>}/>
 
                     <Route path="/user" element={<UserMain/>}/>
+
+                    <Route path="/login" element={<Login/>}/>
+
+                    <Route path="/register" element={<Register/>}/>
+
 
 
                     {/*<Route path="/team" element={<AuthGuard/>}>*/}
