@@ -34,10 +34,18 @@ body {
 .bg-custom-animated{
   background: linear-gradient(100deg, $gradientColor1, $gradientColor2, $gradientColor3);
   background-size: 1600% 1600%;
+
   -webkit-animation: AnimationName 27s ease infinite;
   -moz-animation: AnimationName 27s ease infinite;
   -o-animation: AnimationName 27s ease infinite;
   animation: AnimationName 27s ease infinite;
+}
+
+.bg-custom-bw-gradient {
+  //background: $gradientColor1!important;
+  //background: -moz-linear-gradient(50deg, $gradientColor1 0%, $gradientColor2 50%, $gradientColor3 100%)!important;
+  //background: -webkit-linear-gradient(50deg, $gradientColor1 0%, $gradientColor2 50%, $gradientColor3 100%)!important;
+  background: linear-gradient(100deg, $gradientColor1, rgb(4, 42, 12))!important;
 }
 
 @-webkit-keyframes AnimationName {
@@ -60,6 +68,7 @@ body {
   50%{background-position:100% 90%}
   100%{background-position:0% 11%}
 }
+
 
 .bg-white {
   background: #ffffff;
@@ -98,11 +107,13 @@ body {
 }
 
 .scrollY {
-  overflow-y: scroll;
+  overflow-y: scroll!important;
+  overflow-x: hidden!important;
 }
 
 .scrollX {
   overflow-x: scroll;
+  overflow-y: hidden!important;
 }
 
 .h-10 {
@@ -153,4 +164,8 @@ body {
 ::-webkit-scrollbar-thumb:window-inactive {
   width: 6px;
   background-color: #F5F5F5;
+}
+
+.pointer:hover {
+  cursor: pointer!important;
 }

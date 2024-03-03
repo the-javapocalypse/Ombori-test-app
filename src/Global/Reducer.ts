@@ -5,7 +5,7 @@ import {SET_FORM_DATA} from "./Types";
 const initialState = {
     global: {
         language: 'en',
-        theme: 'dark'
+        theme: 'light'
     }
 }
 
