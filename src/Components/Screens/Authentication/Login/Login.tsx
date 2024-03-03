@@ -159,8 +159,6 @@ function Login() {
                             </form>
 
 
-                            <Divider className={'my-2 my-md-4'}>Or continue with</Divider>
-
 
                             <div className="col-md-12 my-5">
                                 <p className="my-2 mx-md-2 mx-0 text-center">

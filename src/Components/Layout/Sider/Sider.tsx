@@ -21,6 +21,8 @@ import {collapse} from "./Actions";
 import {expand} from "../Header/Actions"
 import {useNavigate} from "react-router-dom";
 import Tooltip from '@mui/material/Tooltip';
+import {getMenuItems} from "../../../Services/MenuItems";
+import {useTranslation} from "react-i18next";
 
 // font awesome stuff
 const iconList = Object
@@ -31,12 +33,6 @@ const iconList = Object
 library.add(...iconList)
 
 const drawerWidth = 240;
-
-interface menuItem {
-    title: '',
-    url: '',
-    icon: ''
-}
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -86,6 +82,9 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
 );
 
 function Sider() {
+    // translation
+    const {t} = useTranslation();
+
     // Set Theme
     const theme = useTheme();
 
@@ -140,19 +139,7 @@ function Sider() {
     }
 
     // Menu Items
-    const menuItems: any = [
-        {
-            title: 'Logout',
-            url: '/logout',
-            icon: 'exclamation-triangle'
-        },
-        {
-            title: 'Users',
-            url: '/user',
-            icon: 'user-plus'
-        },
-        // %TEMPLATE_MENU_ITEMS%
-    ];
+    const menuItems: any = getMenuItems(t);
 
     return (
         <>

@@ -23,12 +23,10 @@ function Router() {
     const {t, i18n} = useTranslation();
 
     // get current language
-    // const language = useSelector(
-    //     (state: RootStateOrAny) => state.global.global.language,
-    // );
+    const language = useSelector(
+        (state: RootStateOrAny) => state.global.global.language,
+    );
 
-    // switch language here
-    // i18n.changeLanguage('en')
 
     // theme configs in redux (if any specific page needs a different theme)
     const [themeColors, setThemeColors] = useState({
@@ -73,8 +71,16 @@ function Router() {
             textColor: theme == 'dark' ? '#FFFFFF' : '#121212' ,
         })
 
-        console.log(darkTheme);
     }, [theme]);
+
+    useEffect(() => {
+        console.log(language);
+
+        if(language){
+            // switch language here
+            i18n.changeLanguage(language)
+        }
+    }, [language]);
 
     return (
         <ThemeProvider theme={darkTheme}>
@@ -86,19 +92,20 @@ function Router() {
                     {/* Generic Error */}
                     <Route path="/error" element={<Error/>}/>
 
-                    <Route path="/" element={<Home/>}/>
-
-                    <Route path="/user" element={<UserMain/>}/>
-
+                    {/* Non Guarded Routes */}
                     <Route path="/login" element={<Login/>}/>
-
                     <Route path="/register" element={<Register/>}/>
+                    <Route path="/logout" element={<Login/>}/>
 
-
-
-                    {/*<Route path="/team" element={<AuthGuard/>}>*/}
-                    {/*    <Route path="/team" element={<TeamMain/>}/>*/}
+                    {/* Route Guard */}
+                    {/*<Route path="/user" element={<AuthGuard/>}>*/}
+                    {/*    <Route path="/user" element={<UserMain/>}/>*/}
                     {/*</Route>*/}
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/dashboard" element={<Home/>}/>
+                    <Route path="/user" element={<UserMain/>}/>
+                    <Route path="/report" element={<UserMain/>}/>
+                    <Route path="/export" element={<UserMain/>}/>
 
                 </Routes>
             </BrowserRouter>

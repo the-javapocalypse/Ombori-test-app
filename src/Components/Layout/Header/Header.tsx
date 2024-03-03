@@ -7,10 +7,10 @@ import MuiAppBar from "@mui/material/AppBar";
 import {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar/AppBar";
 import {RootStateOrAny, useDispatch, useSelector} from "react-redux";
 import {collapse} from "./Actions";
-import { expand } from "../Sider/Actions";
-import {switchTheme} from "../../../Global/Actions";
+import {expand} from "../Sider/Actions";
+import {switchLanguage, switchTheme} from "../../../Global/Actions";
 import '../../../index.scss';
-import {Box, FormControlLabel, Switch} from "@mui/material";
+import {Box, FormControl, FormControlLabel, InputLabel, MenuItem, Select, Switch} from "@mui/material";
 import BottomAppBar from "../BottomAppBar/BottomAppBar";
 
 
@@ -110,6 +110,10 @@ function Header() {
     const [activeTheme, setActiveTheme] = React.useState(theme);
 
 
+    // data vars
+    const [language, setLanguage] = React.useState('en');
+
+
     // Hooks
     useEffect(() => {
         setOpen(!header.state.isExpanded);
@@ -123,13 +127,21 @@ function Header() {
         dispatch(switchTheme(activeTheme));
     }, [activeTheme]);
 
+    useEffect(() => {
+        dispatch(switchLanguage(language));
+    }, [language]);
+
     // UI toggles
     const handleDrawerOpen = () => {
         dispatch(collapse()) //header collapse state change
         dispatch(expand()) //sider expand state change
     };
 
-  const toggleTheme = () => {
+    const toggleLanguage = (_e: any) => {
+        setLanguage(_e.target.value);
+    }
+
+    const toggleTheme = () => {
         setActiveTheme(activeTheme === 'light' ? 'dark' : 'light')
     }
 
@@ -156,6 +168,22 @@ function Header() {
                         </h5>
 
                         <Box sx={{marginLeft: "auto"}}>
+                            <FormControl sx={{m: 1, minWidth: 120}} size="small">
+                                <InputLabel id="language-toggle">Language</InputLabel>
+                                <Select
+                                    labelId="language-toggle"
+                                    id="language-select"
+                                    value={language}
+                                    label="Language"
+                                    onChange={toggleLanguage}
+                                >
+                                    <MenuItem value={'en'}>En</MenuItem>
+                                    <MenuItem value={'fr'}>Fr</MenuItem>
+                                    <MenuItem value={'de'}>Gr</MenuItem>
+                                </Select>
+                            </FormControl>
+                            &nbsp;&nbsp;
+
                             <FormControlLabel
                                 control={<MaterialUISwitch sx={{m: 1}} onClick={toggleTheme}/>}
                                 label=""
