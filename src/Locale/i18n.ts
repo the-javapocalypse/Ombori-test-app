@@ -50,7 +50,8 @@ i18n
                         editSuccess: 'Record updated successfully',
                         deleteSuccess: 'Record deleted successfully',
                         genericSuccess: 'Operation completed successfully',
-                        addResults: 'Add Results'
+                        addResults: 'Add Results',
+                        overview: 'Overview'
                     },
                     module: {
                         register: 'Register',
@@ -58,7 +59,16 @@ i18n
                         user: 'Users',
                     },
                     user: {
-                        lazyLoadCompleted: 'All Users Fetched'
+                        lazyLoadCompleted: 'All Users Fetched',
+                        firstName: 'First Name',
+                        lastName: 'Last Name',
+                        email: 'Email',
+                        contact: 'Contact',
+                        password: 'Password',
+                        total: 'Total Users',
+                        active: 'Active Users',
+                        inactive: 'In-Active Users',
+                        userList: 'Users List',
                     },
                 }
             },

@@ -49,7 +49,7 @@ function ConfirmationDialog({title, body, type, isLoading, confirmEvent, dataIte
     };
 
     return (
-        <div>
+        <div className={'d-inline-block pl-1'}>
             <IconButton aria-label="delete" size="small" onClick={handleClickOpen}>
                 <FontAwesomeIcon className="delete-btn" icon='trash'/>
             </IconButton>
